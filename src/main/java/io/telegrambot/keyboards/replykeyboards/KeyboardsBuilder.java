@@ -102,40 +102,6 @@ public class KeyboardsBuilder {
 
     }
 
-    public ReplyKeyboardMarkup partsOfBodyMenu(){
-        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-        keyboardMarkup.setSelective(true);
-        keyboardMarkup.setResizeKeyboard(true);
-
-        List<KeyboardRow> keyboardRows = new ArrayList<>();
-
-        KeyboardRow row = new KeyboardRow();
-
-        row.add("Chest\uD83C\uDFCB️");
-        row.add("Back\uD83C\uDFCB️");
-        row.add("Biceps\uD83C\uDFCB️");
-
-        keyboardRows.add(row);
-
-        row = new KeyboardRow();
-
-        row.add("Triceps\uD83C\uDFCB️");
-        row.add("Legs\uD83C\uDFCB️");
-        row.add("Glutes\uD83C\uDFCB️");
-
-        keyboardRows.add(row);
-
-        row = new KeyboardRow();
-
-        row.add("Main menu\uD83D\uDD19");
-
-        keyboardRows.add(row);
-
-        keyboardMarkup.setKeyboard(keyboardRows);
-        return keyboardMarkup;
-
-    }
-
 
 
 }
