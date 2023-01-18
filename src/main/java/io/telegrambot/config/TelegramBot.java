@@ -1,89 +1,86 @@
 package io.telegrambot.config;
 
-import io.telegrambot.keyboards.KeyboardsBuilder;
+
+import io.telegrambot.Dispatcher;
+import io.telegrambot.model.User;
+import io.telegrambot.model.UserSession;
+import io.telegrambot.service.UserSessionService;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
+@PropertySource("telegram.properties")
 public class TelegramBot extends TelegramLongPollingBot {
 
-    private String start = "/start";
+    private final Dispatcher dispatcher;
+    private final UserSessionService userSessionService;
+    private final BotConfig config;
 
-    final KeyboardsBuilder keyboardsBuilder;
 
-    final BotConfig config;
 
-    public TelegramBot(KeyboardsBuilder keyboardsBuilder, BotConfig config) {
-        this.keyboardsBuilder = keyboardsBuilder;
+    public TelegramBot(Dispatcher dispatcher, UserSessionService userSessionService, BotConfig config) {
+        this.dispatcher = dispatcher;
+        this.userSessionService = userSessionService;
         this.config = config;
+
     }
 
 
     @Override
     public String getBotUsername() {
-        return config.getBotName();
+        return config.botName;
     }
 
     @Override
     public String getBotToken() {
-        return config.getBotToken();
+        return config.botToken;
     }
+
+
+
+
+    //----------------------------------------//
 
     @Override
-    public void onUpdateReceived(Update update) {
+        public void onUpdateReceived(Update update) {
+          if (update.hasMessage() && update.getMessage().hasText()) {
+              String textFromUser = update.getMessage().getText();
+              String userName = update.getMessage().getFrom().getFirstName();
+              Long userId = update.getMessage().getFrom().getId();
+              Long chatId = update.getMessage().getChatId();
+              UserSession userSession = userSessionService.getSession(chatId);
 
-        if (update.hasMessage() && update.getMessage().hasText()) {
-            SendMessage sendMessage = new SendMessage();
-            String messageText = update.getMessage().getText();
+                User user = User
+                        .builder()
+                        .update(update)
+                        .chatId(chatId)
+                        .userSession(userSession)
+                        .build();
 
-            Long chatId = update.getMessage().getChatId();
-
-            if (messageText.equals("/start")) {
-                startMessage(chatId, update.getMessage().getChat().getFirstName());
-            } else {
-                wrongMessageText(chatId, "Sorry, I'm just a bot \uD83E\uDD16 and sometimes" +
-                        "I don't understand what you write to me \uD83D\uDE1E\n" +
-                        "\n" +
-                        "To display the keyboard with answer options, please press the button \uD83D\uDC47");
-            }
-        }
-
+                boolean dispatched = dispatcher.dispatch(user);
+          }
     }
 
-    private void startMessage(Long chatId, String name) {
-
+        private void sendMessage(Long chatId, String textToSend) {
+        Update update = new Update();
         SendMessage sendMessage = new SendMessage();
-        String startAnswer = "Hi, " + name + ", nice to meet you";
-        sendMessage.setText(startAnswer);
-        sendMessage.setChatId(String.valueOf(chatId));
-        keyboardsBuilder.startMenuBuilder(sendMessage);
-
-        try {
-            execute(sendMessage);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
-
-
-
-    }
-    private void wrongMessageText(Long chatId,String textToSend){
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(String.valueOf(chatId));
         sendMessage.setText(textToSend);
+        sendMessage.setChatId(String.valueOf(chatId));
 
-        try {
-            execute(sendMessage);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
+
+            try {
+                execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+
         }
-    }
-}
+
+        }
+
+
+
