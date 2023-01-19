@@ -1,6 +1,5 @@
 package io.telegrambot.handler;
 
-import io.telegrambot.config.BotContext;
 import io.telegrambot.model.User;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;

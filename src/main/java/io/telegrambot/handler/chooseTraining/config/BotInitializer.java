@@ -1,4 +1,4 @@
-package io.telegrambot.config;
+package io.telegrambot.handler.chooseTraining.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;

@@ -26,7 +26,7 @@ public class CardioHandler extends UserRequestHandler {
     @Override
     public void enter(User user) {
         ReplyKeyboard replyKeyboard = inlineKeyboardBuilder.cardioMenu();
-        telegramService.sendMessage(user.getChatId(), "Cardio", replyKeyboard);
+        telegramService.sendMessage(user.getChatId(), "Cardio⬇️", replyKeyboard);
     }
 
     @Override

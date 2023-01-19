@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 public class InlineKeyboardBuilder {
-    public InlineKeyboardMarkup chatButtons(){
+    public InlineKeyboardMarkup chatButtons() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> row = new ArrayList<>();
         List<InlineKeyboardButton> buttons = new ArrayList<>();
@@ -27,11 +27,11 @@ public class InlineKeyboardBuilder {
         return inlineKeyboardMarkup;
     }
 
-    public InlineKeyboardMarkup partsOfBodyMenu(){
+    public InlineKeyboardMarkup partsOfBodyMenu() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
         List<InlineKeyboardButton> row1 = new ArrayList<>();
-        InlineKeyboardButton chest =new InlineKeyboardButton();
+        InlineKeyboardButton chest = new InlineKeyboardButton();
         chest.setText("Chest");
         chest.setUrl("https://t.me/chat_trainingapp");
         row1.add(chest);
@@ -57,7 +57,7 @@ public class InlineKeyboardBuilder {
         List<InlineKeyboardButton> row3 = new ArrayList<>();
         InlineKeyboardButton legs = new InlineKeyboardButton();
         legs.setText("Legs");
-        legs.setUrl("https://t.me/chat_trainingapp");
+        legs.setUrl("https://youtu.be/G5nxGTFBauM");
         row3.add(legs);
 
         InlineKeyboardButton abs = new InlineKeyboardButton();
@@ -67,13 +67,12 @@ public class InlineKeyboardBuilder {
         rowList.add(row3);
 
 
-
         inlineKeyboardMarkup.setKeyboard(rowList);
 
         return inlineKeyboardMarkup;
     }
 
-    public InlineKeyboardMarkup cardioMenu(){
+    public InlineKeyboardMarkup cardioMenu() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
         List<InlineKeyboardButton> row1 = new ArrayList<>();
@@ -89,11 +88,12 @@ public class InlineKeyboardBuilder {
 
         return inlineKeyboardMarkup;
     }
-    public InlineKeyboardMarkup splitMenu(){
+
+    public InlineKeyboardMarkup splitMenu() {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
         List<InlineKeyboardButton> row1 = new ArrayList<>();
-        InlineKeyboardButton chestBiceps =new InlineKeyboardButton();
+        InlineKeyboardButton chestBiceps = new InlineKeyboardButton();
         chestBiceps.setText("Chest&Biceps");
         chestBiceps.setUrl("https://t.me/chat_trainingapp");
         row1.add(chestBiceps);
@@ -122,7 +122,6 @@ public class InlineKeyboardBuilder {
     }
 
 
-
-    }
+}
 
 

@@ -31,19 +31,18 @@ public class DoneFeedbackHandler extends UserRequestHandler {
     public void enter(User user) {
 
 
-                ReplyKeyboard replyKeyboard = keyboardsBuilder.startMenu();
-                telegramService.sendMessage(user.getChatId(), "Thanks for feedback", replyKeyboard);
+        ReplyKeyboard replyKeyboard = keyboardsBuilder.startMenu();
+        telegramService.sendMessage(user.getChatId(), "Thanks for feedback✅", replyKeyboard);
 
-                String feedback = user.getUpdate().getMessage().getText();
+        String feedback = user.getUpdate().getMessage().getText();
 
-                UserSession userSession = user.getUserSession();
-                userSession.setText(feedback);
-                userSession.setState(State.START_MESSAGE);
-                userSessionService.saveSession(userSession.getChatId(), userSession);
+        UserSession userSession = user.getUserSession();
+        userSession.setFeedback(feedback);
+        userSession.setState(State.START_MESSAGE);
+        userSessionService.saveSession(userSession.getChatId(), userSession);
 
 
-            }
-
+    }
 
 
     @Override

@@ -26,7 +26,7 @@ public class SplitHandler extends UserRequestHandler {
     @Override
     public void enter(User user) {
         ReplyKeyboard replyKeyboard = inlineKeyboardBuilder.splitMenu();
-        telegramService.sendMessage(user.getChatId(), "Choose your split", replyKeyboard);
+        telegramService.sendMessage(user.getChatId(), "Choose your split⬇️", replyKeyboard);
     }
 
     @Override

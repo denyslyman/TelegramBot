@@ -24,14 +24,14 @@ public class MainMenuHandler extends UserRequestHandler {
     @Override
     public void enter(User user) {
         ReplyKeyboard replyKeyboard = keyboardsBuilder.startMenu();
-        telegramService.sendMessage(user.getChatId(), " \uD83D\uDD19",replyKeyboard);
+        telegramService.sendMessage(user.getChatId(), " \uD83D\uDD19", replyKeyboard);
 
 
     }
 
     @Override
     public boolean isApplicable(User user) {
-        return isTextMessage(user.getUpdate(),MAIN_MENU);
+        return isTextMessage(user.getUpdate(), MAIN_MENU);
     }
 
     @Override

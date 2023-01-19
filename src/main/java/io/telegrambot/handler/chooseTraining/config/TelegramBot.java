@@ -1,4 +1,4 @@
-package io.telegrambot.config;
+package io.telegrambot.handler.chooseTraining.config;
 
 
 import io.telegrambot.Dispatcher;
@@ -8,9 +8,7 @@ import io.telegrambot.service.UserSessionService;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @Component
 @PropertySource("telegram.properties")
@@ -20,15 +18,12 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final UserSessionService userSessionService;
     private final BotConfig config;
 
-
-
     public TelegramBot(Dispatcher dispatcher, UserSessionService userSessionService, BotConfig config) {
         this.dispatcher = dispatcher;
         this.userSessionService = userSessionService;
         this.config = config;
 
     }
-
 
     @Override
     public String getBotUsername() {
@@ -41,8 +36,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
 
-
-
     //----------------------------------------//
 
     @Override
@@ -50,7 +43,6 @@ public class TelegramBot extends TelegramLongPollingBot {
           if (update.hasMessage() && update.getMessage().hasText()) {
               String textFromUser = update.getMessage().getText();
               String userName = update.getMessage().getFrom().getFirstName();
-              Long userId = update.getMessage().getFrom().getId();
               Long chatId = update.getMessage().getChatId();
               UserSession userSession = userSessionService.getSession(chatId);
 
@@ -65,22 +57,8 @@ public class TelegramBot extends TelegramLongPollingBot {
           }
     }
 
-        private void sendMessage(Long chatId, String textToSend) {
-        Update update = new Update();
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setText(textToSend);
-        sendMessage.setChatId(String.valueOf(chatId));
-
-
-            try {
-                execute(sendMessage);
-            } catch (TelegramApiException e) {
-                e.printStackTrace();
-            }
-
         }
 
-        }
 
 
 
