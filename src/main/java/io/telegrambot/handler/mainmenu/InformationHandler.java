@@ -27,7 +27,7 @@ public class InformationHandler extends UserRequestHandler {
     public void enter(User user) {
         ReplyKeyboard replyKeyboard = keyboardsBuilder.startMenu();
         telegramService.sendMessage(user.getChatId(), "\uD83E\uDDBEOur bot was created for your convenience." +
-                " Here you can find home workouts for every taste: cardio, splits and workouts for certain" +
+                " Here you can find home workouts for every taste: cardio and workouts for certain" +
                 " parts of the body. Now you do not need to spend a lot of time to climb the sites and" +
                 " look for information before each workout. You can also leave your feedback to improve" +
                 " our work. Have a good training!", replyKeyboard);

@@ -33,11 +33,11 @@ public class InlineKeyboardBuilder {
         List<InlineKeyboardButton> row1 = new ArrayList<>();
         InlineKeyboardButton chest = new InlineKeyboardButton();
         chest.setText("Chest");
-        chest.setUrl("https://t.me/chat_trainingapp");
+        chest.setUrl("https://drive.google.com/drive/folders/13kREJjFiLElEivsfsZZByxIv5J4bHsMw?usp=sharing");
         row1.add(chest);
         InlineKeyboardButton biceps = new InlineKeyboardButton();
         biceps.setText("Biceps");
-        biceps.setUrl("https://t.me/chat_trainingapp");
+        biceps.setUrl("https://drive.google.com/drive/folders/1oyzWZRDrvMvK7BJujxqYf3gdL0ZG9L2O?usp=sharing");
         row1.add(biceps);
         rowList.add(row1);
 
@@ -45,24 +45,24 @@ public class InlineKeyboardBuilder {
         List<InlineKeyboardButton> row2 = new ArrayList<>();
         InlineKeyboardButton back = new InlineKeyboardButton();
         back.setText("Back");
-        back.setUrl("https://t.me/chat_trainingapp");
+        back.setUrl("https://drive.google.com/drive/folders/1_hFeJIiYfa12WXhRQVQbUcYk5bLHhu6X?usp=sharing");
         row2.add(back);
 
         InlineKeyboardButton triceps = new InlineKeyboardButton();
         triceps.setText("Triceps");
-        triceps.setUrl("https://t.me/chat_trainingapp");
+        triceps.setUrl("https://drive.google.com/drive/folders/1BTrXzJx4dKiy-y6s4Ovem8ffACoj6BYy?usp=sharing");
         row2.add(triceps);
         rowList.add(row2);
 
         List<InlineKeyboardButton> row3 = new ArrayList<>();
         InlineKeyboardButton legs = new InlineKeyboardButton();
         legs.setText("Legs");
-        legs.setUrl("https://youtu.be/G5nxGTFBauM");
+        legs.setUrl("https://drive.google.com/drive/folders/1guH-q6Jf2bVPiuayHH_D_J5E8txkEVcS?usp=sharing");
         row3.add(legs);
 
         InlineKeyboardButton abs = new InlineKeyboardButton();
         abs.setText("Abs");
-        abs.setUrl("https://t.me/chat_trainingapp");
+        abs.setUrl("https://drive.google.com/drive/folders/1stdeD6OtSUp7LY1I1D7_Z9rawlfJoSTf?usp=sharing");
         row3.add(abs);
         rowList.add(row3);
 
@@ -79,42 +79,10 @@ public class InlineKeyboardBuilder {
 
         InlineKeyboardButton cardio = new InlineKeyboardButton();
         cardio.setText("Cardio");
-        cardio.setUrl("https://t.me/chat_trainingapp");
+        cardio.setUrl("https://drive.google.com/drive/folders/1v2XgxHSYsR3WYsdCQIaKoJ1Xq-2KXlgX?usp=sharing");
         row1.add(cardio);
         rowList.add(row1);
 
-
-        inlineKeyboardMarkup.setKeyboard(rowList);
-
-        return inlineKeyboardMarkup;
-    }
-
-    public InlineKeyboardMarkup splitMenu() {
-        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
-        List<InlineKeyboardButton> row1 = new ArrayList<>();
-        InlineKeyboardButton chestBiceps = new InlineKeyboardButton();
-        chestBiceps.setText("Chest&Biceps");
-        chestBiceps.setUrl("https://t.me/chat_trainingapp");
-        row1.add(chestBiceps);
-        InlineKeyboardButton backTriceps = new InlineKeyboardButton();
-        backTriceps.setText("Back&Triceps");
-        backTriceps.setUrl("https://t.me/chat_trainingapp");
-        row1.add(backTriceps);
-        rowList.add(row1);
-
-
-        List<InlineKeyboardButton> row2 = new ArrayList<>();
-        InlineKeyboardButton legsShoulders = new InlineKeyboardButton();
-        legsShoulders.setText("Legs&Shoulders");
-        legsShoulders.setUrl("https://t.me/chat_trainingapp");
-        row2.add(legsShoulders);
-
-        InlineKeyboardButton absGlutes = new InlineKeyboardButton();
-        absGlutes.setText("Abs&Glutes");
-        absGlutes.setUrl("https://t.me/chat_trainingapp");
-        row2.add(absGlutes);
-        rowList.add(row2);
 
         inlineKeyboardMarkup.setKeyboard(rowList);
 
